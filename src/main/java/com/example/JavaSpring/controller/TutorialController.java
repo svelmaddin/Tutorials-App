@@ -21,12 +21,12 @@ public class TutorialController {
     private final TutorialService tutorialService;
 
 
-    @GetMapping("/get")
-    @ApiOperation(value = "Getting All Tutorials")
-    public ResponseEntity<List<Tutorials>> getAllTutorials(){
-        List<Tutorials> allTutorials = tutorialService.getAllTutorials();
-        return new ResponseEntity<>(allTutorials, HttpStatus.OK);
-    }
+//    @GetMapping("/get")
+//    @ApiOperation(value = "Getting All Tutorials")
+//    public ResponseEntity<List<Tutorials>> getAllTutorials(){
+//        List<Tutorials> allTutorials = tutorialService.getAllTutorials();
+//        return new ResponseEntity<>(allTutorials, HttpStatus.OK);
+//    }
 
     @PostMapping("/create")
     @ApiOperation(value = "Create Tutorial")
