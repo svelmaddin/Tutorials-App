@@ -9,10 +9,6 @@ import javax.persistence.*;
 @Table(name = "tutorials")
 @Data
 public class Tutorials {
-//    @javax.persistence.Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    @Column(name = "id", nullable = false)
-//    private Long id;
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

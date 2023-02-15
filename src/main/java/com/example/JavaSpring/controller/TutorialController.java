@@ -2,6 +2,7 @@ package com.example.JavaSpring.controller;
 
 import com.example.JavaSpring.entity.Tutorials;
 import com.example.JavaSpring.exception.TutorialNotFoundException;
+import com.example.JavaSpring.service.FileService;
 import com.example.JavaSpring.service.TutorialService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 public class TutorialController {
 
     private final TutorialService tutorialService;
+    private final FileService fileService;
 
 
     @GetMapping("/get")
@@ -55,10 +57,11 @@ public class TutorialController {
         return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
     }
 
-//    @PostMapping("/upload")
-//    public ResponseEntity<?> uploadFile(
-//            @RequestParam("file") MultipartFile file) {
-//    }
+    @PostMapping("/upload")
+    public void uploadFile(
+            @RequestParam("file") MultipartFile file) {
+            fileService.save(file);
+    }
 
 
 

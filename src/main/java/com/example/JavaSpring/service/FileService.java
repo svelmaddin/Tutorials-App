@@ -21,16 +21,16 @@ public class FileService {
             e.printStackTrace();
             throw  new RuntimeException();
         }
-//        try {
-////            Files.copy(file.getInputStream(),
-////                    this.root.resolve(file.getOriginalFilename()));
-//
-//        } catch (Exception e) {
-//            if (e instanceof FileAlreadyExistsException) {
-//                throw new RuntimeException("A file of that name already exists.");
-//            }
-//            throw new RuntimeException(e.getMessage());
-//        }
+        try {
+            Files.copy(file.getInputStream(),
+                    this.root.resolve(file.getOriginalFilename()));
+
+        } catch (Exception e) {
+            if (e instanceof FileAlreadyExistsException) {
+                throw new RuntimeException("A file of that name already exists.");
+            }
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
 
