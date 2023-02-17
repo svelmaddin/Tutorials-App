@@ -1,9 +1,9 @@
 package com.example.JavaSpring.controller;
 
 import com.example.JavaSpring.entity.Tutorials;
-import com.example.JavaSpring.exception.TutorialNotFoundException;
-import com.example.JavaSpring.service.FileService;
+import com.example.JavaSpring.service.impl.FileService;
 import com.example.JavaSpring.service.TutorialService;
+import com.example.JavaSpring.service.impl.TutorialServiceImpl;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,20 +17,22 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Api(tags = "Employee Controller")
-public class TutorialController {
+public class TutorialController implements TutorialService{
 
-    private final TutorialService tutorialService;
+    private final TutorialServiceImpl tutorialService;
     private final FileService fileService;
 
 
     @GetMapping("/get")
+    @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Getting All Tutorials")
-    public ResponseEntity<List<Tutorials>> getAllTutorials(){
+    public List<Tutorials> getAllTutorials(){
         List<Tutorials> allTutorials = tutorialService.getAllTutorials();
-        return new ResponseEntity<>(allTutorials, HttpStatus.OK);
+        return allTutorials;
     }
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create Tutorial")
     @ApiResponses(
             value = {
@@ -44,9 +46,11 @@ public class TutorialController {
 
 
     @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiOperation(value = "Get Tutorial by Id")
-    public ResponseEntity<Tutorials> getTutorialById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(tutorialService.getTutorialById(id), HttpStatus.OK);
+    public Tutorials getTutorialById(@PathVariable("id") Long id) {
+       Tutorials tutorials = tutorialService.getTutorialById(id);
+       return tutorials;
     }
 
 
@@ -54,7 +58,7 @@ public class TutorialController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTutorialById(@PathVariable("id") Long id) {
         tutorialService.deleteTutorialById(id);
-        return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/upload")
@@ -62,8 +66,6 @@ public class TutorialController {
             @RequestParam("file") MultipartFile file) {
             fileService.save(file);
     }
-
-
 
 
 }
