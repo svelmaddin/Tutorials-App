@@ -3,7 +3,6 @@ package com.example.JavaSpring.service.impl;
 
 import com.example.JavaSpring.entity.Tutorials;
 import com.example.JavaSpring.exception.TutorialAlreadyExistsException;
-import com.example.JavaSpring.model.Tutorial;
 import com.example.JavaSpring.repository.TutorialRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,8 +17,6 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,7 +29,7 @@ class TutorialServiceTest {
     @MockBean
     private TutorialRepository tutorialRepository;
 
-
+//sariyev1234git
     @Test
     void givenWhenGetAllTutorialsThenReturnTutorialsList() {
         List<Tutorials> tutorials = new ArrayList<>();
