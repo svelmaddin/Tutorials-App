@@ -164,20 +164,6 @@ class TutorialServiceImplTestByDiffBlue {
     /**
      * Method under test: {@link TutorialServiceImpl#getTutorialById(Long)}
      */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testGetTutorialById2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException: Cannot invoke "java.util.Optional.get()" because the return value of "com.example.JavaSpring.repository.TutorialRepository.findById(Object)" is null
-        //       at com.example.JavaSpring.service.impl.TutorialServiceImpl.getTutorialById(TutorialServiceImpl.java:43)
-        //   See https://diff.blue/R013 to resolve this issue.
-
-        when(tutorialRepository.findById((Long) any())).thenReturn(null);
-        tutorialServiceImpl.getTutorialById(123L);
-    }
 
     /**
      * Method under test: {@link TutorialServiceImpl#getTutorialById(Long)}
